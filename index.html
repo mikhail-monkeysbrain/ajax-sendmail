@@ -1,0 +1,33 @@
+<div class="messages"></div>
+<br/>
+<label>Ваше имя:</label><br/>
+<input type="text" id="user_name" value="" /><br/>
+ 
+<label>Ваш телефон:</label><br/>
+<input type="text" id="user_phone" value="" /><br/>
+ 
+<br/>
+<div  id="btn_submit" >jngsdf</div>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#btn_submit').click(function(){
+            var user_name    = $('#user_name').val();
+            var user_email   = $('#user_phone').val();
+            $.ajax({
+                url: "sendmail.php",
+                type: "post",
+                dataType: "json",
+                data: { 
+                    "user_name":    user_name,
+                    "user_phone":   user_email,
+                },
+                success: function(data){
+                    $('.messages').html(data.result);
+                }
+            });
+        });
+    });
+</script>
